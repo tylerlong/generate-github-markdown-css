@@ -53,7 +53,7 @@ function cleanupCss(str) {
 		}
 
 		if (el.type ==='rule') {
-			if (/::-webkit-validation|[:\-]placeholder$|^\.integrations-slide-content|^\.prose-diff|@font-face|^button::|^article$|^.plan-chooser|^.plan-notice|\.site-search/.test(el.selectors[0])) {
+			if (/::-webkit-validation|[:\-]placeholder$|^\.integrations-slide-content|^\.prose-diff|@font-face|^button::|^article$|^.plan-choice|^.plan-price|^.plan-notice|\.site-search/.test(el.selectors[0])) {
 				return false;
 			}
 
@@ -66,17 +66,6 @@ function cleanupCss(str) {
 			if (el.selectors[0] === 'body' && el.selectors[1] === 'input') {
 				el.selectors.shift();
 			}
-
-			// rename the .octoicons font
-      // if (el.selectors[0] === '.octicon') {
-      //   el.declarations = el.declarations.map(function (el) {
-      //     if (el.property === 'font') {
-      //       el.value += '-anchor';
-      //     }
-      //
-      //     return el;
-      //   });
-      // }
 
 			if (el.selectors.length === 1 && /^(?:html|body)$/.test(el.selectors[0])) {
 				el.declarations = el.declarations.filter(function (declaration) {
